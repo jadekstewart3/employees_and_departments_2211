@@ -48,4 +48,15 @@ class Budget
     end
     employee_expenses
   end
+
+  def total_employee_expenses
+    total_employee_expenses = Hash.new(0)
+
+    employee_expenses.each do |employee, expenses|
+      expenses.each do |expense|
+        total_employee_expenses[employee] += expense
+      end
+    end
+    total_employee_expenses
+  end
 end

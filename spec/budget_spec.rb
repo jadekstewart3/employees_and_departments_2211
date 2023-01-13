@@ -113,14 +113,13 @@ RSpec.describe do
       aaron.add_expense(50)
       philip.add_expense(300)
       philip.add_expense(75)
-      zach.add_expense(45)
       zach.add_expense(90)
 
       expected = {
-                  bobbi => [125],
-                  aaron => [50],
-                  philip => [375],
-                  zach => [115]
+                  bobbi => 125,
+                  aaron => 50,
+                  philip => 375,
+                  zach => 90
       }
 
       expect(budget.total_employee_expenses).to eq(expected)

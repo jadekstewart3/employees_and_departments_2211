@@ -26,6 +26,7 @@ RSpec.describe do
       customer_service.hire(aaron)
 
       expect(customer_service.employees).to eq([bobbi, aaron])
+      require 'pry'; binding.pry
     end
   end
 
