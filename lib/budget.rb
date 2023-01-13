@@ -33,4 +33,19 @@ class Budget
     end
     salaries
   end
+
+  def employee_expenses
+    employee_expenses = Hash.new 
+
+    @departments.each do |department|
+      department.employees.each do |employee|
+        if  employee_expenses[employee]
+          employee_expenses[employee] << employee.expenses
+        else
+          employee_expenses[employee] = [employee.expenses].flatten
+        end
+      end
+    end
+    employee_expenses
+  end
 end
