@@ -97,4 +97,33 @@ RSpec.describe do
       expect(budget.employee_expenses).to eq(expected)
     end
   end
+
+  describe '#total_employee_expenses' do 
+    it 'can total employee expenses' do 
+      budget.add_department(customer_service)
+      budget.add_department(it)
+
+      customer_service.hire(bobbi)
+      customer_service.hire(aaron)
+      it.hire(philip)
+      it.hire(zach)
+
+      bobbi.add_expense(100)
+      bobbi.add_expense(25)
+      aaron.add_expense(50)
+      philip.add_expense(300)
+      philip.add_expense(75)
+      zach.add_expense(45)
+      zach.add_expense(90)
+
+      expected = {
+                  bobbi => [125],
+                  aaron => [50],
+                  philip => [375],
+                  zach => [115]
+      }
+
+      expect(budget.total_employee_expenses).to eq(expected)
+    end
+  end
 end
