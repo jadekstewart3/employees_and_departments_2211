@@ -9,7 +9,9 @@ RSpec.describe do
   let(:it) { Department.new("I.T.") }
 
   let(:bobbi) { Employee.new({name: "Bobbi Jaeger", age: "30", salary: "$100000"}) }
-  let(:aaron) { Employee.new({name: "Aaron Tanaka", age: "25", salary: "90000"}) }
+  let(:aaron) { Employee.new({name: "Aaron Tanaka", age: "25", salary: "$90000"}) }
+  let(:philip) { Employee.new({name: "Philip James", age: "36", salary: "$101000"}) }
+  let(:zach) { Employee.new({name: "Zach Hazelwood", age: "32", salary: "$100500"}) }
 
   describe '#initialize' do 
     it 'exists' do 
@@ -44,6 +46,26 @@ RSpec.describe do
       
       
       expect(budget.expenses_less_than_500).to eq([customer_service])
+    end
+  end
+
+  describe '#employee_salaries' do
+    it 'returns a hash of employees and their salaries' do 
+      budget.add_department(customer_service)
+      budget.add_department(it)
+
+      customer_service.hire(bobbi)
+      customer_service.hire(aaron)
+      it.hire(philip)
+      it.hire(zach)
+
+      expected = {
+                  bobbi => 100000,
+                  aaron => 90000,
+                  philip => 101000,
+                  zach => 100500
+                }
+      expect(budget.employee_salaries).to eq(expected)
     end
   end
 end

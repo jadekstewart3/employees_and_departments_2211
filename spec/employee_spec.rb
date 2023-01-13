@@ -2,7 +2,7 @@ require './lib/employee'
 
 RSpec.describe do 
 
-  let(:bobbi) { Employee.new({name: "Bobbi Jaeger", age: "30", salary: "$100000"}) }
+  let(:bobbi) { Employee.new({name: "Bobbi Jaeger", age: "30", salary: "$10000"}) }
 
   describe '#initialize' do 
     it 'exists' do 
